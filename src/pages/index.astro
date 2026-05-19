@@ -372,6 +372,81 @@ import Layout from '../layouts/Layout.astro';
 .access-list .row .val { font-size: 13px; color: var(--ink); line-height: 1.8; }
 .access-list .row .val .en { font-size: 15px; margin-right: 6px; }
 
+/* ENTRY CARDS */
+.entry-sec {
+  padding: 96px 24px 80px;
+}
+.entry-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.entry-card {
+  display: block;
+  text-decoration: none;
+  background: var(--off-white);
+  border-radius: var(--radius-lg);
+  padding: 28px 28px 24px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.entry-card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px -8px rgba(74,58,46,0.14); }
+.entry-card.pink { background: var(--pink); }
+.entry-card.lav  { background: var(--lavender); }
+.entry-card.sage { background: var(--sage); }
+.entry-num {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-mute);
+  margin-bottom: 8px;
+}
+.entry-en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 48px;
+  line-height: 0.9;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.entry-jp {
+  font-size: 12px;
+  color: var(--ink-soft);
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(74,58,46,0.12);
+}
+.entry-desc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.entry-arrow {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+}
+
+/* TABLET 760+ */
+@media (min-width: 760px) {
+  .entry-sec { padding: 120px 48px; max-width: 1200px; margin: 0 auto; }
+  .entry-grid { flex-direction: row; gap: 20px; }
+  .entry-card { flex: 1; }
+  .entry-en { font-size: 56px; }
+}
+@media (min-width: 1100px) {
+  .entry-sec { padding: 160px 80px; }
+  .entry-en { font-size: 72px; }
+}
+
 /* TABLET 760+ */
 @media (min-width: 760px) {
   .hero { padding: 0 0 120px; }
@@ -404,43 +479,7 @@ import Layout from '../layouts/Layout.astro';
   .concept .lead small { font-size: 40px; }
   .concept-imgs { margin-top: 0; grid-template-rows: 200px 280px; gap: 16px; }
 
-  .menu-sec { padding: 120px 48px; }
-  .menu-sec .section-head,
-  .menu-sec .section-jp,
-  .menu-sec .menu-grid { max-width: 1200px; margin-left: auto; margin-right: auto; }
   .section-head h2 { font-size: 88px; }
-  .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .menu-card { grid-template-columns: 140px 1fr; }
-  .menu-card .ph { width: 140px; height: 168px; }
-  .menu-card .ttl-en { font-size: 32px; }
-
-  .stylist-sec { padding: 120px 48px 96px; max-width: 1300px; margin: 0 auto; }
-  .stylist-sec .section-head { padding: 0; }
-  .stylist-sec .section-jp { padding: 0 !important; }
-  .stylist-track {
-    overflow: visible;
-    padding: 12px 0 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-  }
-  .stylist-card { flex: 1; }
-  .stylist-card .name-en { font-size: 36px; }
-
-  .insta-sec { padding: 120px 48px; }
-  .insta-grid { max-width: 1100px; margin: 0 auto; gap: 12px; }
-  .insta-grid .ph { border-radius: 16px; }
-  .insta-head .handle { font-size: 64px; }
-
-  .access-prev { padding: 120px 48px; max-width: 1200px; margin: 0 auto; }
-  .access-card {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 36px;
-    padding: 40px;
-    align-items: center;
-  }
-  .access-card .map-ph { height: 100%; min-height: 320px; margin-bottom: 0; }
 }
 
 /* DESKTOP 1100+ */
@@ -450,18 +489,6 @@ import Layout from '../layouts/Layout.astro';
   .concept { padding: 160px 80px; grid-template-columns: 1fr 1.1fr; gap: 96px; }
   .concept .lead { font-size: 84px; }
   .concept .lead small { font-size: 48px; }
-  .menu-sec { padding: 160px 80px; }
-  .menu-grid { grid-template-columns: repeat(4, 1fr); }
-  .menu-card { grid-template-columns: 1fr; }
-  .menu-card .ph { width: 100%; height: 220px; }
-  .menu-card .body { padding: 20px 8px 8px; }
-  .menu-card .ttl-en { font-size: 28px; }
-  .stylist-sec { padding: 160px 80px 120px; }
-  .insta-sec { padding: 160px 80px; }
-  .insta-grid { grid-template-columns: repeat(6, 1fr); }
-  .insta-grid .ph { border-radius: 18px; }
-  .access-prev { padding: 160px 80px; }
-  .access-card { padding: 56px; gap: 56px; }
   .section-head h2 { font-size: 112px; }
 }
 </style>
@@ -532,147 +559,31 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- MENU PREVIEW -->
-  <section class="menu-sec">
-    <div class="section-head">
-      <h2>Menu</h2>
-      <a class="more" href="/menu">View all →</a>
-    </div>
-    <div class="section-jp">人気のメニュー · 03</div>
-    <div class="menu-grid">
-      <article class="menu-card reveal">
-        <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=600&q=80" alt="" /></div>
-        <div class="body">
-          <div class="num">M / 01</div>
-          <div class="ttl-en">Cut &amp; Form</div>
-          <div class="ttl-jp">韓国カット — 顔まわりデザイン</div>
-          <div class="price">
-            <span class="yen">¥6,600<small>〜</small></span>
-            <span class="arrow">DETAIL →</span>
-          </div>
-        </div>
-      </article>
-      <article class="menu-card reveal">
-        <div class="ph photo lav"><img src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?auto=format&fit=crop&w=600&q=80" alt="" /></div>
-        <div class="body">
-          <div class="num">M / 02</div>
-          <div class="ttl-en">Sheer Color</div>
-          <div class="ttl-jp">シアーカラー — くすみ系</div>
-          <div class="price">
-            <span class="yen">¥9,900<small>〜</small></span>
-            <span class="arrow">DETAIL →</span>
-          </div>
-        </div>
-      </article>
-      <article class="menu-card reveal">
-        <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=600&q=80" alt="" /></div>
-        <div class="body">
-          <div class="num">M / 03</div>
-          <div class="ttl-en">Soft Wave Perm</div>
-          <div class="ttl-jp">韓国波ウェーブ・くびれ巻き</div>
-          <div class="price">
-            <span class="yen">¥13,200<small>〜</small></span>
-            <span class="arrow">DETAIL →</span>
-          </div>
-        </div>
-      </article>
-      <article class="menu-card reveal">
-        <div class="ph photo cream"><img src="https://images.unsplash.com/photo-1571875257727-256c39da42af?auto=format&fit=crop&w=600&q=80" alt="" /></div>
-        <div class="body">
-          <div class="num">M / 04</div>
-          <div class="ttl-en">Honey Treatment</div>
-          <div class="ttl-jp">うるおいケアトリートメント</div>
-          <div class="price">
-            <span class="yen">¥4,400<small>〜</small></span>
-            <span class="arrow">DETAIL →</span>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- STYLISTS -->
-  <section class="stylist-sec">
-    <div class="section-head">
-      <h2>Stylist</h2>
-      <a class="more" href="/stylist">All members →</a>
-    </div>
-    <div class="section-jp" style="padding: 0 24px;">在籍スタイリスト · 04</div>
-    <div class="stylist-track">
-      <article class="stylist-card">
-        <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80" alt="Honoka" /></div>
-        <div class="role">Director · 01</div>
-        <div class="name-en">Honoka</div>
-        <div class="name-jp">堀井 ほのか</div>
-        <p class="quote">「やわらかさの中に、あなたの輪郭。」</p>
-      </article>
-      <article class="stylist-card">
-        <div class="ph photo lav"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80" alt="Miyu" /></div>
-        <div class="role">Color Master · 02</div>
-        <div class="name-en">Miyu</div>
-        <div class="name-jp">岸本 みゆ</div>
-        <p class="quote">「肌色で選ぶ、くすみカラー。」</p>
-      </article>
-      <article class="stylist-card">
-        <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80" alt="Reina" /></div>
-        <div class="role">Stylist · 03</div>
-        <div class="name-en">Reina</div>
-        <div class="name-jp">藤田 れいな</div>
-        <p class="quote">「丸みでつくる、韓国シルエット。」</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- INSTAGRAM -->
-  <section class="insta-sec reveal">
-    <div class="insta-head">
-      <div class="eyebrow" style="justify-content:center;">Instagram · 05</div>
-      <div class="handle" style="margin-top: 14px;">@miru_hair</div>
-      <p class="jp">毎日のスタイル更新中 — フォローしてね</p>
-    </div>
-    <div class="insta-grid">
-      <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=600&q=80" alt="" /></div>
-      <div class="ph photo lav"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80" alt="" /></div>
-      <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="" /></div>
-      <div class="ph photo cream"><img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=600&q=80" alt="" /></div>
-      <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80" alt="" /></div>
-      <div class="ph photo lav"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80" alt="" /></div>
-      <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=600&q=80" alt="" /></div>
-      <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="" /></div>
-      <div class="ph photo cream"><img src="https://images.unsplash.com/photo-1522337094846-8a818192de1f?auto=format&fit=crop&w=600&q=80" alt="" /></div>
-    </div>
-    <div class="insta-cta">
-      <a class="cta-ghost">Follow on Instagram</a>
-    </div>
-  </section>
-
-  <!-- ACCESS PREVIEW -->
-  <section class="access-prev">
-    <div class="section-head">
-      <h2>Access</h2>
-      <a class="more" href="/access">Details →</a>
-    </div>
-    <div class="section-jp">アクセス · 06</div>
-    <div class="access-card reveal">
-      <div class="map-ph"></div>
-      <div class="access-list">
-        <div class="row">
-          <div class="lbl">Address</div>
-          <div class="val">東京都渋谷区神宮前 4-00-00<br />MIRU Building 2F</div>
-        </div>
-        <div class="row">
-          <div class="lbl">Station</div>
-          <div class="val"><span class="en">5min</span>表参道駅 A2出口より徒歩</div>
-        </div>
-        <div class="row">
-          <div class="lbl">Open</div>
-          <div class="val">平日 11:00 – 21:00 / 土日 10:00 – 20:00</div>
-        </div>
-        <div class="row">
-          <div class="lbl">Closed</div>
-          <div class="val">毎週火曜・第3水曜</div>
-        </div>
-      </div>
+  <!-- ENTRY CARDS -->
+  <section class="entry-sec reveal">
+    <div class="eyebrow" style="padding: 0 24px; margin-bottom: 24px;">Pages · 03</div>
+    <div class="entry-grid">
+      <a href="/menu" class="entry-card pink">
+        <div class="entry-num">01</div>
+        <div class="entry-en">Menu</div>
+        <div class="entry-jp">メニュー · 料金一覧</div>
+        <p class="entry-desc">カット・カラー・パーマ・ケア。韓国トレンドを中心としたメニューと料金をご覧いただけます。</p>
+        <span class="entry-arrow">View menu →</span>
+      </a>
+      <a href="/stylist" class="entry-card lav">
+        <div class="entry-num">02</div>
+        <div class="entry-en">Stylist</div>
+        <div class="entry-jp">スタイリスト紹介</div>
+        <p class="entry-desc">在籍スタイリスト3名のプロフィール・得意分野・作品をご紹介しています。</p>
+        <span class="entry-arrow">Meet the team →</span>
+      </a>
+      <a href="/access" class="entry-card sage">
+        <div class="entry-num">03</div>
+        <div class="entry-en">Access</div>
+        <div class="entry-jp">アクセス · 営業情報</div>
+        <p class="entry-desc">表参道駅A2出口より徒歩5分。営業時間・地図・道順をご確認いただけます。</p>
+        <span class="entry-arrow">Get directions →</span>
+      </a>
     </div>
   </section>
 
