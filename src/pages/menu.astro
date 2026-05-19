@@ -1,0 +1,410 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Menu — MIRU ミル" currentPage="menu">
+
+<style>
+.menu-hero { padding: 0 24px 32px; position: relative; }
+.menu-hero .ph { aspect-ratio: 16/9; border-radius: 24px; margin-top: 8px; }
+
+.cat-tabs {
+  display: flex;
+  gap: 8px;
+  padding: 0 24px 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cat-tabs::-webkit-scrollbar { display: none; }
+.cat-tab {
+  flex: 0 0 auto;
+  padding: 10px 18px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--off-white);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.cat-tab.active {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+
+.menu-block { padding: 24px 24px 8px; }
+.menu-block .cat-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--hairline);
+}
+.menu-block .cat-head .en { font-size: 44px; line-height: 0.9; color: var(--ink); }
+.menu-block .cat-head .num {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: var(--ink-mute);
+}
+.menu-block .cat-jp {
+  font-size: 12px;
+  color: var(--ink-soft);
+  letter-spacing: 0.2em;
+  margin-bottom: 24px;
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 14px;
+  padding: 18px 0;
+  border-bottom: 1px dashed var(--hairline);
+  align-items: baseline;
+}
+.menu-item:last-child { border-bottom: none; }
+.menu-item .title { font-size: 15px; color: var(--ink); letter-spacing: 0.06em; font-weight: 400; }
+.menu-item .price {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.menu-item .price small { font-family: var(--font-jp); font-style: normal; font-size: 11px; color: var(--ink-mute); margin-left: 2px; }
+.menu-item .desc { grid-column: 1 / -1; font-size: 12px; color: var(--ink-soft); line-height: 1.8; }
+.menu-item .badge {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-right: 8px;
+  vertical-align: 2px;
+}
+.menu-item .badge.pink { background: var(--pink); color: #6e4640; }
+.menu-item .badge.lav  { background: var(--lavender); color: #4a437a; }
+.menu-item .badge.sage { background: var(--sage); color: #3f5840; }
+
+.shade-chart {
+  margin: 28px 0 8px;
+  padding: 24px;
+  background: var(--off-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+.shade-chart h3 {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 28px;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+.shade-chart .sub {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--ink-mute);
+  margin-bottom: 20px;
+}
+.shade-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.shade { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.shade .chip {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: inset 0 -10px 14px rgba(0,0,0,0.06);
+}
+.shade .name { font-family: var(--font-en); font-style: italic; font-size: 13px; color: var(--ink); line-height: 1.1; text-align: center; }
+.shade .jp { font-size: 9px; color: var(--ink-mute); letter-spacing: 0.16em; text-align: center; }
+
+.combo-card {
+  background: linear-gradient(135deg, var(--pink) 0%, var(--lavender) 100%);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin: 32px 0;
+  position: relative;
+  overflow: hidden;
+}
+.combo-card::before {
+  content: "★";
+  position: absolute;
+  top: -20px; right: -10px;
+  font-size: 120px;
+  color: rgba(255,255,255,0.4);
+  font-family: var(--font-en);
+  font-style: italic;
+}
+.combo-card .badge {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.combo-card h3 { font-family: var(--font-en); font-style: italic; font-size: 36px; line-height: 1; color: var(--ink); margin-bottom: 4px; }
+.combo-card .jp { font-size: 13px; color: var(--ink); margin-bottom: 16px; letter-spacing: 0.08em; }
+.combo-card .meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid rgba(74,58,46,0.2);
+}
+.combo-card .meta .yen { font-family: var(--font-en); font-style: italic; font-size: 32px; color: var(--ink); }
+.combo-card .meta .from { font-size: 10px; letter-spacing: 0.3em; color: var(--ink-soft); text-transform: uppercase; }
+.combo-card .meta .strike { font-family: var(--font-en); font-style: italic; font-size: 16px; color: var(--ink-soft); text-decoration: line-through; margin-right: 8px; }
+
+.note-card {
+  margin: 32px 24px 96px;
+  padding: 22px;
+  background: var(--off-white);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+}
+.note-card h4 { font-family: var(--font-en); font-style: italic; font-size: 22px; color: var(--ink); margin-bottom: 12px; }
+.note-card ul { margin: 0; padding-left: 18px; font-size: 12px; line-height: 2; color: var(--ink-soft); }
+.note-card li::marker { color: var(--pink-deep); }
+
+/* TABLET 760+ */
+@media (min-width: 760px) {
+  .menu-hero { padding: 0 48px 40px; max-width: 1200px; margin: 0 auto; }
+  .menu-hero .ph { aspect-ratio: 21/9; }
+  .cat-tabs { padding: 0 48px 40px; max-width: 1200px; margin: 0 auto; }
+  .cat-tab { padding: 12px 24px; font-size: 11px; }
+  .menu-block { padding: 48px 48px 24px; max-width: 1100px; margin: 0 auto; }
+  .menu-block .cat-head .en { font-size: 64px; }
+  .menu-item { padding: 22px 0; column-gap: 24px; }
+  .menu-item .title { font-size: 17px; }
+  .menu-item .price { font-size: 26px; }
+  .menu-item .desc { font-size: 13px; }
+  .shade-chart { padding: 36px; }
+  .shade-list { grid-template-columns: repeat(8, 1fr); gap: 16px; }
+  .combo-card { padding: 48px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: end; }
+  .combo-card h3 { font-size: 56px; }
+  .combo-card .meta { padding-top: 0; border-top: none; justify-content: flex-end; gap: 16px; }
+  .combo-card .meta .yen { font-size: 56px; }
+  .note-card { margin: 48px auto 120px; max-width: 1100px; padding: 32px 40px; }
+}
+
+/* DESKTOP 1100+ */
+@media (min-width: 1100px) {
+  .menu-hero { padding: 0 80px 48px; }
+  .cat-tabs { padding: 0 80px 56px; }
+  .menu-block { padding: 56px 80px 32px; }
+  .menu-block .cat-head .en { font-size: 88px; }
+}
+</style>
+
+  <!-- PAGE HEAD -->
+  <section class="page-head">
+    <div class="eyebrow">Menu · 02 / 04</div>
+    <h1>Menu &amp;<br/><em style="color: var(--pink-deep);">price.</em></h1>
+    <p class="jp-sub">メニュー · 料金一覧</p>
+  </section>
+
+  <!-- HERO IMAGE -->
+  <section class="menu-hero">
+    <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80" alt="" /></div>
+  </section>
+
+  <!-- CATEGORY TABS -->
+  <div class="cat-tabs">
+    <button class="cat-tab active">All</button>
+    <button class="cat-tab">Cut</button>
+    <button class="cat-tab">Color</button>
+    <button class="cat-tab">Perm</button>
+    <button class="cat-tab">Care</button>
+    <button class="cat-tab">Option</button>
+  </div>
+
+  <!-- CUT -->
+  <section class="menu-block reveal">
+    <div class="cat-head">
+      <span class="en">Cut</span>
+      <span class="num">01 / 05</span>
+    </div>
+    <div class="cat-jp">カット · 韓国スタイル設計</div>
+    <div class="menu-item">
+      <div class="title"><span class="badge pink">Signature</span>韓国カット</div>
+      <div class="price">¥6,600<small>〜</small></div>
+      <div class="desc">前髪・顔まわりまで一本一本デザイン。骨格に沿った韓国シルエットへ。</div>
+    </div>
+    <div class="menu-item">
+      <div class="title">顔まわりカット</div>
+      <div class="price">¥3,300<small>〜</small></div>
+      <div class="desc">既存スタイルそのままに、レイヤーと前髪だけを調整。</div>
+    </div>
+    <div class="menu-item">
+      <div class="title">前髪カット</div>
+      <div class="price">¥1,650<small>〜</small></div>
+      <div class="desc">流し前髪 / シースルー / カーテンバング、お好みのスタイルに。</div>
+    </div>
+    <div class="menu-item">
+      <div class="title">学生カット（要学生証）</div>
+      <div class="price">¥5,500<small>〜</small></div>
+    </div>
+  </section>
+
+  <!-- COLOR -->
+  <section class="menu-block reveal">
+    <div class="cat-head">
+      <span class="en">Color</span>
+      <span class="num">02 / 05</span>
+    </div>
+    <div class="cat-jp">カラー · くすみ / シアー / インナー</div>
+    <div class="menu-item">
+      <div class="title"><span class="badge lav">Popular</span>シアーカラー（全体）</div>
+      <div class="price">¥9,900<small>〜</small></div>
+      <div class="desc">光に透ける、韓国っぽい透明感カラー。お肌の色から選びます。</div>
+    </div>
+    <div class="menu-item">
+      <div class="title">リタッチカラー</div>
+      <div class="price">¥6,600<small>〜</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="title">インナーカラー / イヤリングカラー</div>
+      <div class="price">¥7,700<small>〜</small></div>
+      <div class="desc">耳まわりだけ、内側だけ。ちらりと見える韓国アクセント。</div>
+    </div>
+    <div class="menu-item">
+      <div class="title">ハイライト・バレイヤージュ</div>
+      <div class="price">¥13,200<small>〜</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="title">ブリーチ（1回）</div>
+      <div class="price">¥6,600<small>〜</small></div>
+    </div>
+    <div class="shade-chart reveal">
+      <h3>This month's shades</h3>
+      <div class="sub">SS '26 · TRENDING COLORS</div>
+      <div class="shade-list">
+        <div class="shade">
+          <div class="chip" style="background: radial-gradient(circle at 35% 30%, #ecc9c0, #b78174);"></div>
+          <div class="name">Latte</div>
+          <div class="jp">ラテベージュ</div>
+        </div>
+        <div class="shade">
+          <div class="chip" style="background: radial-gradient(circle at 35% 30%, #e6c4b9, #a26257);"></div>
+          <div class="name">Cherry</div>
+          <div class="jp">チェリーブラウン</div>
+        </div>
+        <div class="shade">
+          <div class="chip" style="background: radial-gradient(circle at 35% 30%, #d1cfe2, #6a6388);"></div>
+          <div class="name">Iris</div>
+          <div class="jp">アイリスグレー</div>
+        </div>
+        <div class="shade">
+          <div class="chip" style="background: radial-gradient(circle at 35% 30%, #d6dec9, #7a8a6c);"></div>
+          <div class="name">Olive</div>
+          <div class="jp">オリーブ</div>
+        </div>
+      </div>
+    </div>
+    <div class="combo-card reveal">
+      <span class="badge">First visit · Bundle</span>
+      <h3>Cut + Color<br /><em>+ Care.</em></h3>
+      <p class="jp">初回限定／カット＋シアーカラー＋トリートメント</p>
+      <div class="meta">
+        <div><span class="from">From</span></div>
+        <div>
+          <span class="strike">¥18,700</span>
+          <span class="yen">¥13,200</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERM -->
+  <section class="menu-block reveal">
+    <div class="cat-head">
+      <span class="en">Perm</span>
+      <span class="num">03 / 05</span>
+    </div>
+    <div class="cat-jp">パーマ · 韓国波 / くびれ巻き</div>
+    <div class="menu-item">
+      <div class="title"><span class="badge sage">Trend</span>韓国波ウェーブ</div>
+      <div class="price">¥13,200<small>〜</small></div>
+      <div class="desc">毛先までやわらかく、波打つようなS字シルエット。</div>
+    </div>
+    <div class="menu-item">
+      <div class="title">くびれ巻きパーマ</div>
+      <div class="price">¥13,200<small>〜</small></div>
+      <div class="desc">顔まわりを大きくくびれさせる、韓国の定番。</div>
+    </div>
+    <div class="menu-item">
+      <div class="title">前髪パーマ</div>
+      <div class="price">¥3,850<small>〜</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="title">縮毛矯正</div>
+      <div class="price">¥16,500<small>〜</small></div>
+    </div>
+  </section>
+
+  <!-- CARE -->
+  <section class="menu-block reveal">
+    <div class="cat-head">
+      <span class="en">Care</span>
+      <span class="num">04 / 05</span>
+    </div>
+    <div class="cat-jp">トリートメント · うるおい補修</div>
+    <div class="menu-item">
+      <div class="title">ハニートリートメント</div>
+      <div class="price">¥4,400<small>〜</small></div>
+      <div class="desc">蜂蜜成分でしっとり。指通りと艶のある質感へ。</div>
+    </div>
+    <div class="menu-item">
+      <div class="title">プレミアム水素トリートメント</div>
+      <div class="price">¥6,600<small>〜</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="title">炭酸スパ（15min）</div>
+      <div class="price">¥2,200<small>〜</small></div>
+    </div>
+  </section>
+
+  <!-- OPTION -->
+  <section class="menu-block reveal">
+    <div class="cat-head">
+      <span class="en">Option</span>
+      <span class="num">05 / 05</span>
+    </div>
+    <div class="cat-jp">オプション</div>
+    <div class="menu-item">
+      <div class="title">セット・ブロー仕上げ</div>
+      <div class="price">¥2,200<small>〜</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="title">ヘッドスパ（30min）</div>
+      <div class="price">¥3,300<small>〜</small></div>
+    </div>
+    <div class="menu-item">
+      <div class="title">前撮り・SNS用撮影</div>
+      <div class="price">¥3,300<small>〜</small></div>
+    </div>
+  </section>
+
+  <!-- NOTE -->
+  <div class="note-card reveal">
+    <h4>Notice</h4>
+    <ul>
+      <li>表示価格はすべて税込です。</li>
+      <li>ロング料金（鎖骨下）は +¥1,100 を頂戴いたします。</li>
+      <li>初回のお客様は、予約フォームの備考にお書きください。</li>
+      <li>キャンセルは前日 18:00 までにご連絡をお願いします。</li>
+    </ul>
+  </div>
+
+</Layout>

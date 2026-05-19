@@ -1,0 +1,763 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Access — MIRU ミル" currentPage="access">
+
+  <section class="page-head">
+    <div class="eyebrow">Access · 04 / 04</div>
+    <h1>Find<br/><em style="color: var(--pink-deep);">us</em>.</h1>
+    <p class="jp-sub">アクセス · 営業情報</p>
+  </section>
+
+  <!-- MAP -->
+  <div class="map-wrap reveal">
+    <div class="map">
+      <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice">
+        <ellipse class="park" cx="60" cy="60" rx="80" ry="50" />
+        <text class="lbl" x="30" y="50">Jingu Park</text>
+        <text class="lbl-jp" x="30" y="64">神宮前公園</text>
+
+        <path class="road" d="M -20 200 L 420 200" />
+        <path class="road" d="M 200 -20 L 200 340" />
+        <path class="road-narrow" d="M 0 100 L 400 130" />
+        <path class="road-narrow" d="M 80 320 L 120 0" />
+        <path class="road-narrow" d="M 280 0 L 320 320" />
+
+        <text class="lbl" x="220" y="194">Omotesando Ave.</text>
+        <text class="lbl-jp" x="220" y="208">表参道通り</text>
+        <text class="lbl" x="210" y="80">Aoyama Dori</text>
+
+        <rect x="20" y="220" width="60" height="34" rx="6" fill="#ffffffcc" stroke="#4a3a2e" stroke-width="1" />
+        <text class="lbl" x="28" y="240">M Station</text>
+        <text class="lbl-jp" x="28" y="252">表参道</text>
+
+        <rect x="240" y="220" width="60" height="36" rx="6" fill="#ffffffaa" />
+        <rect x="320" y="220" width="60" height="36" rx="6" fill="#ffffffaa" />
+        <rect x="220" y="40" width="50" height="40" rx="6" fill="#ffffffaa" />
+        <rect x="290" y="40" width="60" height="40" rx="6" fill="#ffffffaa" />
+      </svg>
+
+      <div class="pin">
+        <div class="badge">MIRU here</div>
+        <div class="stem"></div>
+        <div class="dot"></div>
+        <div class="ping"></div>
+      </div>
+    </div>
+    <div class="map-foot">
+      <span>Map · Omotesando</span>
+      <a class="copy">Copy address</a>
+    </div>
+  </div>
+
+  <!-- INFO CARDS -->
+  <div class="info-grid reveal">
+    <div class="info-card pink">
+      <div class="icon-circ">A</div>
+      <div>
+        <div class="label">Address</div>
+        <div class="value">東京都渋谷区神宮前 4-00-00<br/>MIRU Building 2F</div>
+      </div>
+      <span class="arrow">→</span>
+    </div>
+    <div class="info-card lav">
+      <div class="icon-circ">S</div>
+      <div>
+        <div class="label">Station</div>
+        <div class="value">表参道駅 A2 出口 · 徒歩5分<br/>明治神宮前駅 · 徒歩8分</div>
+      </div>
+      <span class="arrow">→</span>
+    </div>
+    <div class="info-card sage">
+      <div class="icon-circ">T</div>
+      <div>
+        <div class="label">Tel</div>
+        <div class="value">03-0000-0000</div>
+      </div>
+      <span class="arrow">→</span>
+    </div>
+  </div>
+
+  <!-- HOURS + ROUTE side-by-side on tablet+ -->
+  <div class="hours-route-row">
+    <div class="hours reveal">
+      <div class="hours-head">
+        <span class="en">Hours</span>
+        <span class="status">Open now · 11:00 — 21:00</span>
+      </div>
+      <div class="hours-list">
+        <div class="hours-row">
+          <span class="day">Mon</span>
+          <span class="day-jp">月</span>
+          <span class="time">11:00 – 21:00</span>
+        </div>
+        <div class="hours-row today">
+          <span class="day">Tue</span>
+          <span class="day-jp">火 · 定休日</span>
+          <span class="time" style="color: var(--ink-mute);">Closed</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Wed</span>
+          <span class="day-jp">水</span>
+          <span class="time">11:00 – 21:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Thu</span>
+          <span class="day-jp">木</span>
+          <span class="time">11:00 – 21:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Fri</span>
+          <span class="day-jp">金</span>
+          <span class="time">11:00 – 21:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Sat</span>
+          <span class="day-jp">土</span>
+          <span class="time">10:00 – 20:00</span>
+        </div>
+        <div class="hours-row">
+          <span class="day">Sun</span>
+          <span class="day-jp">日</span>
+          <span class="time">10:00 – 20:00</span>
+        </div>
+      </div>
+      <div class="hours-note">
+        ※ 第3水曜は定休日。最終受付は閉店の90分前まで。
+      </div>
+    </div>
+
+    <div class="route reveal">
+      <div class="route-head">
+        <span class="en">Route</span>
+        <div class="jp">表参道駅からのご案内 · 徒歩5分</div>
+      </div>
+      <div class="step">
+        <div class="num">1</div>
+        <div class="body">
+          <div class="ttl">表参道駅 A2 出口</div>
+          <div class="desc">地下鉄銀座線・千代田線・半蔵門線「表参道駅」A2 出口を出ます。</div>
+          <span class="time-tag">Start · 0 min</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div class="body">
+          <div class="ttl">青山通りを原宿方面へ</div>
+          <div class="desc">そのまま青山通り（表参道）を、原宿方面に直進してください。</div>
+          <span class="time-tag">+ 2 min · 200m</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div class="body">
+          <div class="ttl">2 つ目の信号を右折</div>
+          <div class="desc">カフェ「BLUE BIRD」が見えたら、その角を右折します。</div>
+          <span class="time-tag">+ 4 min · 350m</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div class="body">
+          <div class="ttl">MIRU Building 2F</div>
+          <div class="desc">クリーム色の外観のビル。1Fが花屋、2Fが当サロンです。</div>
+          <span class="time-tag">Arrive · 5 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERIOR -->
+  <section class="interior reveal">
+    <div class="section-head">
+      <h2>Inside</h2>
+      <span class="more">サロン内装</span>
+    </div>
+    <div class="section-jp" style="margin-top: -28px;">空間 · インテリア</div>
+    <div class="interior-track">
+      <div class="ph photo cream tall"><img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80" alt="" /></div>
+      <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80" alt="" /></div>
+      <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80" alt="" /></div>
+    </div>
+  </section>
+
+  <!-- SNS -->
+  <section class="sns reveal">
+    <div class="section-head">
+      <h2>Follow</h2>
+      <span class="more">SNS</span>
+    </div>
+    <div class="section-jp" style="margin-top: -28px;">最新スタイル更新中</div>
+    <div class="sns-grid">
+      <a class="sns-card pink">
+        <div class="lbl">Instagram</div>
+        <div class="handle">@miru_hair</div>
+        <p class="desc">毎日のスタイル / 髪型カタログ</p>
+        <span class="arrow">Follow →</span>
+      </a>
+      <a class="sns-card sage">
+        <div class="lbl">LINE</div>
+        <div class="handle">@miru-line</div>
+        <p class="desc">予約・お問い合わせ / お得情報</p>
+        <span class="arrow">Add →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT BOX -->
+  <div class="contact-box reveal">
+    <div>
+      <div class="contact-label">Contact · 24h Web 予約</div>
+      <h3>Ready to<br/><em>meet</em>?</h3>
+      <p>初めての方も、ご相談だけでも歓迎です。<br/>お電話・LINEからもお気軽にどうぞ。</p>
+      <span class="tel">03-0000-0000</span>
+      <span class="tel-hours">受付 · 11:00 — 20:00</span>
+    </div>
+    <div class="contact-cta">
+      <a>Web reserve</a>
+      <a>LINE chat</a>
+    </div>
+  </div>
+
+</Layout>
+
+<style>
+/* MAP */
+.map-wrap {
+  margin: 0 24px 32px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  background: var(--off-white);
+}
+.map {
+  height: 320px;
+  position: relative;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 24px, rgba(74,58,46,0.05) 24px 25px),
+    repeating-linear-gradient(90deg, transparent 0 24px, rgba(74,58,46,0.05) 24px 25px),
+    linear-gradient(135deg, #ece5d3, #d8cfb5);
+}
+.map svg {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+}
+.map .road {
+  stroke: rgba(255, 252, 246, 0.9);
+  stroke-width: 12;
+  fill: none;
+  stroke-linecap: round;
+}
+.map .road-narrow {
+  stroke: rgba(255, 252, 246, 0.7);
+  stroke-width: 6;
+  fill: none;
+  stroke-linecap: round;
+}
+.map .park {
+  fill: var(--sage);
+  opacity: 0.6;
+}
+.map .lbl {
+  font-family: var(--font-en);
+  font-style: italic;
+  fill: var(--ink-soft);
+  font-size: 11px;
+}
+.map .lbl-jp {
+  font-family: var(--font-jp);
+  font-size: 9px;
+  fill: var(--ink-soft);
+  letter-spacing: 0.1em;
+}
+.pin {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  z-index: 3;
+}
+.pin .badge {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  box-shadow: 0 12px 24px -8px rgba(74,58,46,0.4);
+  white-space: nowrap;
+}
+.pin .stem {
+  width: 1px;
+  height: 14px;
+  background: var(--ink);
+  margin: 0 auto;
+}
+.pin .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--ink);
+  margin: 0 auto;
+  border: 3px solid var(--cream);
+  box-shadow: 0 0 0 1px var(--ink);
+}
+.pin .ping {
+  position: absolute;
+  bottom: -10px; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(217, 179, 174, 0.5);
+  animation: pulse 2.4s ease-out infinite;
+  z-index: -1;
+}
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(0.4); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
+}
+.map-foot {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: var(--off-white);
+  border-top: 1px solid var(--hairline);
+}
+.map-foot .copy { text-decoration: underline; cursor: pointer; }
+
+/* INFO CARDS */
+.info-grid {
+  padding: 0 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.info-card {
+  background: var(--off-white);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  box-shadow: var(--shadow-card);
+}
+.info-card .icon-circ {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--cream-deep);
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 18px;
+}
+.info-card.pink .icon-circ { background: var(--pink); }
+.info-card.lav  .icon-circ { background: var(--lavender); }
+.info-card.sage .icon-circ { background: var(--sage); }
+.info-card .label {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 4px;
+}
+.info-card .value {
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+.info-card .arrow {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--ink-mute);
+}
+
+/* HOURS */
+.hours {
+  margin: 32px 24px;
+  padding: 28px 24px;
+  background: var(--off-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+.hours-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--hairline);
+}
+.hours-head .en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 36px;
+  color: var(--ink);
+  line-height: 1;
+}
+.hours-head .status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+}
+.hours-head .status::before {
+  content: "";
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--sage-deep);
+  box-shadow: 0 0 0 4px rgba(168, 184, 164, 0.3);
+}
+.hours-list {
+  display: flex;
+  flex-direction: column;
+}
+.hours-row {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 13px;
+  border-bottom: 1px dashed var(--hairline);
+}
+.hours-row:last-child { border-bottom: none; }
+.hours-row.today {
+  background: var(--cream-deep);
+  margin: 0 -24px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  border-bottom: none;
+}
+.hours-row .day {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink);
+}
+.hours-row .day-jp {
+  color: var(--ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+}
+.hours-row .time {
+  font-family: var(--font-en);
+  font-style: italic;
+  color: var(--ink);
+  font-size: 16px;
+}
+.hours-note {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--hairline);
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: 0.1em;
+}
+
+/* ROUTE */
+.route {
+  margin: 32px 24px;
+  padding: 28px 22px;
+  background: linear-gradient(180deg, var(--cream-deep), var(--cream));
+  border-radius: var(--radius-lg);
+}
+.route-head { margin-bottom: 20px; }
+.route-head .en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 36px;
+  color: var(--ink);
+  line-height: 1;
+  display: block;
+}
+.route-head .jp {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  letter-spacing: 0.2em;
+}
+.step {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 14px;
+  padding: 14px 0;
+  position: relative;
+}
+.step::before {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: 17px;
+  bottom: -14px;
+  width: 1px;
+  background: var(--hairline);
+  z-index: 0;
+}
+.step:last-child::before { display: none; }
+.step .num {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1px solid var(--hairline);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-en);
+  font-style: italic;
+  color: var(--ink);
+  font-size: 16px;
+  position: relative;
+  z-index: 1;
+}
+.step .body { padding-top: 6px; }
+.step .ttl {
+  font-size: 14px;
+  color: var(--ink);
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+.step .desc {
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+.step .time-tag {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 6px;
+}
+
+/* INTERIOR */
+.interior {
+  padding: 32px 24px 0;
+}
+.interior-track {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.interior-track .ph {
+  aspect-ratio: 1;
+  border-radius: 14px;
+}
+.interior-track .ph.tall {
+  grid-row: span 2;
+  aspect-ratio: unset;
+}
+
+/* SNS */
+.sns {
+  margin: 32px 24px 24px;
+}
+.sns-head { margin-bottom: 20px; }
+.sns-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.sns-card {
+  display: block;
+  background: var(--off-white);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  text-decoration: none;
+}
+.sns-card.pink { background: var(--pink); }
+.sns-card.sage { background: var(--sage); }
+.sns-card .lbl {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+.sns-card .handle {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.sns-card .desc {
+  font-size: 11px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.sns-card .arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+}
+
+/* CONTACT BOX */
+.contact-box {
+  margin: 32px 24px 96px;
+  padding: 32px 28px;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: var(--radius-lg);
+}
+.contact-label {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 12px;
+}
+.contact-box h3 {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 40px;
+  line-height: 0.95;
+  margin-bottom: 16px;
+  color: var(--cream);
+}
+.contact-box p {
+  color: rgba(250, 246, 237, 0.8);
+  font-size: 13px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.contact-box .tel {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 32px;
+  letter-spacing: 0.02em;
+  display: block;
+  margin: 16px 0 4px;
+  color: var(--cream);
+}
+.contact-box .tel-hours {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--pink);
+  text-transform: uppercase;
+  display: block;
+}
+.contact-cta {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+.contact-cta a {
+  flex: 1;
+  padding: 14px;
+  border-radius: 999px;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+.contact-cta a:first-child {
+  background: var(--cream);
+  color: var(--ink);
+}
+.contact-cta a:last-child {
+  border: 1px solid var(--cream);
+  color: var(--cream);
+}
+
+/* TABLET 760+ */
+@media (min-width: 760px) {
+  .map-wrap {
+    margin: 0 auto 48px;
+    max-width: 1200px;
+    padding: 0 48px;
+    padding: 0;
+  }
+  .map { height: 480px; }
+  .info-grid {
+    padding: 0 48px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .info-card { flex: 1; min-width: 280px; }
+
+  .hours-route-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 32px auto;
+    padding: 0 48px;
+  }
+  .hours-route-row .hours,
+  .hours-route-row .route { margin: 0; }
+
+  .interior {
+    padding: 56px 48px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .interior-track { grid-template-columns: 1fr 1fr 1fr; }
+  .interior-track .ph.tall { grid-row: span 1; aspect-ratio: 1; }
+
+  .sns {
+    padding: 32px 48px;
+    max-width: 1200px;
+    margin: 24px auto;
+  }
+  .contact-box {
+    margin: 48px auto 120px;
+    max-width: 1200px;
+    padding: 56px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .contact-box h3 { font-size: 64px; }
+  .contact-cta { margin-top: 0; }
+}
+
+/* DESKTOP 1100+ */
+@media (min-width: 1100px) {
+  .map { height: 540px; }
+  .info-grid { padding: 0 80px 40px; gap: 20px; }
+  .hours-route-row { padding: 0 80px; gap: 32px; }
+  .interior { padding: 80px 80px 0; }
+  .sns { padding: 32px 80px; }
+  .contact-box { padding: 72px 80px; gap: 56px; }
+}
+</style>

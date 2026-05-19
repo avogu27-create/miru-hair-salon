@@ -1,0 +1,385 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Stylist — MIRU ミル" currentPage="stylist">
+
+<style>
+.stylist-page-hero { padding: 0 24px 12px; }
+.stylist-page-hero .ph { aspect-ratio: 4/5; border-radius: 24px; }
+
+.stylist-feature { padding: 0 24px 48px; }
+.stylist-feature .meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px 0 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--hairline);
+}
+.stylist-feature .role-chip {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 6px 14px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--off-white);
+}
+.stylist-feature .index-num {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--ink-mute);
+}
+
+.stylist-detail {
+  background: var(--off-white);
+  margin: 16px 24px 32px;
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+.stylist-detail .num-mark {
+  position: absolute;
+  top: 18px; right: 24px;
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 60px;
+  color: var(--cream-deep);
+  line-height: 1;
+}
+.stylist-detail .role {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 8px;
+}
+.stylist-detail .name-en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 56px;
+  line-height: 0.9;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.stylist-detail .name-jp {
+  font-size: 13px;
+  color: var(--ink-soft);
+  letter-spacing: 0.16em;
+  margin-bottom: 24px;
+}
+.stylist-detail .quote {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 24px;
+  color: var(--ink);
+  line-height: 1.3;
+  margin: 24px 0 8px;
+  padding-left: 18px;
+  border-left: 2px solid var(--pink-deep);
+}
+.stylist-detail .quote-jp {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+  letter-spacing: 0.06em;
+  padding-left: 18px;
+}
+.stylist-detail .bio {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 2;
+  margin-bottom: 24px;
+}
+
+.specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+.spec-cell {
+  padding: 14px;
+  background: var(--cream);
+  border-radius: 14px;
+  border: 1px solid var(--hairline);
+}
+.spec-cell .lbl {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 6px;
+}
+.spec-cell .val { font-size: 12px; color: var(--ink); line-height: 1.6; }
+
+.skills { margin: 20px 0; }
+.skills .head {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 12px;
+}
+.skill-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 36px;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+.skill-row .name { color: var(--ink); }
+.skill-row .bar { height: 4px; background: var(--cream-deep); border-radius: 999px; overflow: hidden; }
+.skill-row .bar > i { display: block; height: 100%; background: var(--ink); border-radius: 999px; }
+.skill-row .pct { font-family: var(--font-en); font-style: italic; color: var(--ink-soft); text-align: right; font-size: 13px; }
+
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 20px 0; }
+.gallery .ph { aspect-ratio: 3/4; border-radius: 10px; }
+
+.book-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 20px;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin-top: 12px;
+  cursor: pointer;
+}
+.book-btn .arrow {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+}
+
+.team-meta {
+  padding: 0 24px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.team-meta .line { flex: 1; height: 1px; background: var(--hairline); }
+
+/* TABLET 760+ */
+@media (min-width: 760px) {
+  .team-meta { padding: 0 48px 24px; max-width: 1200px; margin: 0 auto; }
+
+  .stylist-page-hero {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    padding: 0;
+    align-self: start;
+    position: sticky;
+    top: 100px;
+  }
+  .stylist-page-hero .ph { aspect-ratio: 4/5; border-radius: 28px; }
+  .stylist-feature { grid-column: 2; grid-row: 1; padding: 0; }
+  .stylist-detail { grid-column: 2; grid-row: 2; margin: 0; padding: 32px 36px; }
+
+  article.stylist-article {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 48px;
+    padding: 0 48px 96px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .stylist-detail .name-en { font-size: 72px; }
+  .stylist-detail .quote { font-size: 28px; }
+  .specs { grid-template-columns: repeat(4, 1fr); }
+  .gallery { gap: 12px; }
+  .gallery .ph { border-radius: 14px; }
+}
+
+/* DESKTOP 1100+ */
+@media (min-width: 1100px) {
+  article.stylist-article { padding: 0 80px 120px; gap: 80px; }
+  .stylist-page-hero { top: 140px; }
+  .stylist-detail { padding: 40px 48px; }
+  .stylist-detail .name-en { font-size: 88px; }
+  .stylist-detail .num-mark { font-size: 96px; }
+}
+</style>
+
+  <section class="page-head">
+    <div class="eyebrow">Stylist · 03 / 04</div>
+    <h1>Our<br/><em style="color: var(--pink-deep);">three</em>.</h1>
+    <p class="jp-sub">在籍スタイリスト · 3 members</p>
+  </section>
+
+  <div class="team-meta">
+    <span>3 Members</span>
+    <span class="line"></span>
+    <span>Updated 2026</span>
+  </div>
+
+  <!-- STYLIST 01 — HONOKA -->
+  <article class="stylist-article reveal">
+    <div class="stylist-page-hero">
+      <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80" alt="Honoka" /></div>
+    </div>
+    <div class="stylist-feature">
+      <div class="meta-row">
+        <span class="role-chip">Director</span>
+        <span class="index-num">01 / 03</span>
+      </div>
+    </div>
+    <div class="stylist-detail">
+      <div class="num-mark">01</div>
+      <div class="role">Director · 韓国カット担当</div>
+      <h2 class="name-en">Honoka</h2>
+      <div class="name-jp">堀井 ほのか — HORII HONOKA</div>
+      <div class="quote">"Soft, but with a&nbsp;spine."</div>
+      <p class="quote-jp">やわらかさの中に、あなたの輪郭を。</p>
+      <p class="bio">
+        韓国・ソウルでの3年間の修行を経て、2024年MIRUを立ち上げ。
+        骨格分析を軸にした韓国カットを得意とし、SNSでは月20万PVを記録。
+        "顔まわり1ミリ" にこだわるディレクター。
+      </p>
+      <div class="specs">
+        <div class="spec-cell"><div class="lbl">Career</div><div class="val">12年 / 2014–</div></div>
+        <div class="spec-cell"><div class="lbl">From</div><div class="val">福岡県 · 北九州市</div></div>
+        <div class="spec-cell"><div class="lbl">Specialty</div><div class="val">韓国カット<br/>顔まわりデザイン</div></div>
+        <div class="spec-cell"><div class="lbl">Instagram</div><div class="val">@honoka_miru</div></div>
+      </div>
+      <div class="skills">
+        <div class="head">Best at</div>
+        <div class="skill-row"><span class="name">Cut</span><span class="bar"><i style="width:96%;"></i></span><span class="pct">96</span></div>
+        <div class="skill-row"><span class="name">Perm</span><span class="bar"><i style="width:84%;"></i></span><span class="pct">84</span></div>
+        <div class="skill-row"><span class="name">Color</span><span class="bar"><i style="width:78%;"></i></span><span class="pct">78</span></div>
+        <div class="skill-row"><span class="name">Styling</span><span class="bar"><i style="width:90%;"></i></span><span class="pct">90</span></div>
+      </div>
+      <div class="head" style="font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-mute); margin: 20px 0 12px;">Recent works</div>
+      <div class="gallery">
+        <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+        <div class="ph photo cream"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+        <div class="ph photo lav"><img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+      </div>
+      <a class="book-btn">Reserve with Honoka <span class="arrow">→</span></a>
+    </div>
+  </article>
+
+  <!-- STYLIST 02 — MIYU -->
+  <article class="stylist-article reveal">
+    <div class="stylist-page-hero">
+      <div class="ph photo lav"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80" alt="Miyu" /></div>
+    </div>
+    <div class="stylist-feature">
+      <div class="meta-row">
+        <span class="role-chip">Color Master</span>
+        <span class="index-num">02 / 03</span>
+      </div>
+    </div>
+    <div class="stylist-detail">
+      <div class="num-mark">02</div>
+      <div class="role">Color Master · カラーリスト</div>
+      <h2 class="name-en">Miyu</h2>
+      <div class="name-jp">岸本 みゆ — KISHIMOTO MIYU</div>
+      <div class="quote">"Choose your <em>own</em>&nbsp;color."</div>
+      <p class="quote-jp">肌色で選ぶ、あなただけのくすみカラー。</p>
+      <p class="bio">
+        韓国カラーの可能性に魅了されカラーリスト一本に。
+        パーソナルカラー診断を踏まえた、肌に馴染むシアートーンが得意。
+        "1ミリの透けかた" に妥協しない、繊細な配合師。
+      </p>
+      <div class="specs">
+        <div class="spec-cell"><div class="lbl">Career</div><div class="val">8年 / 2018–</div></div>
+        <div class="spec-cell"><div class="lbl">From</div><div class="val">大阪府 · 堺市</div></div>
+        <div class="spec-cell"><div class="lbl">Specialty</div><div class="val">シアーカラー<br/>インナーカラー</div></div>
+        <div class="spec-cell"><div class="lbl">Instagram</div><div class="val">@miyu_miru</div></div>
+      </div>
+      <div class="skills">
+        <div class="head">Best at</div>
+        <div class="skill-row"><span class="name">Color</span><span class="bar"><i style="width:98%;"></i></span><span class="pct">98</span></div>
+        <div class="skill-row"><span class="name">Bleach</span><span class="bar"><i style="width:92%;"></i></span><span class="pct">92</span></div>
+        <div class="skill-row"><span class="name">Care</span><span class="bar"><i style="width:86%;"></i></span><span class="pct">86</span></div>
+        <div class="skill-row"><span class="name">Cut</span><span class="bar"><i style="width:70%;"></i></span><span class="pct">70</span></div>
+      </div>
+      <div class="head" style="font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-mute); margin: 20px 0 12px;">Recent works</div>
+      <div class="gallery">
+        <div class="ph photo lav"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+        <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+        <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+      </div>
+      <a class="book-btn">Reserve with Miyu <span class="arrow">→</span></a>
+    </div>
+  </article>
+
+  <!-- STYLIST 03 — REINA -->
+  <article class="stylist-article reveal">
+    <div class="stylist-page-hero">
+      <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80" alt="Reina" /></div>
+    </div>
+    <div class="stylist-feature">
+      <div class="meta-row">
+        <span class="role-chip">Stylist</span>
+        <span class="index-num">03 / 03</span>
+      </div>
+    </div>
+    <div class="stylist-detail">
+      <div class="num-mark">03</div>
+      <div class="role">Stylist · パーマ・スタイリング</div>
+      <h2 class="name-en">Reina</h2>
+      <div class="name-jp">藤田 れいな — FUJITA REINA</div>
+      <div class="quote">"Round, &amp; <em>just&nbsp;right.</em>"</div>
+      <p class="quote-jp">丸みでつくる、韓国シルエット。</p>
+      <p class="bio">
+        韓国の波ウェーブパーマを得意とする、最年少スタイリスト。
+        柔らかな質感と扱いやすさの両立にこだわり、再現性の高い仕上がりが評判。
+        SNSでは"#reina巻き" タグで多数の再現投稿が並ぶ。
+      </p>
+      <div class="specs">
+        <div class="spec-cell"><div class="lbl">Career</div><div class="val">5年 / 2021–</div></div>
+        <div class="spec-cell"><div class="lbl">From</div><div class="val">東京都 · 世田谷区</div></div>
+        <div class="spec-cell"><div class="lbl">Specialty</div><div class="val">韓国波ウェーブ<br/>くびれ巻き</div></div>
+        <div class="spec-cell"><div class="lbl">Instagram</div><div class="val">@reina_miru</div></div>
+      </div>
+      <div class="skills">
+        <div class="head">Best at</div>
+        <div class="skill-row"><span class="name">Perm</span><span class="bar"><i style="width:94%;"></i></span><span class="pct">94</span></div>
+        <div class="skill-row"><span class="name">Styling</span><span class="bar"><i style="width:92%;"></i></span><span class="pct">92</span></div>
+        <div class="skill-row"><span class="name">Cut</span><span class="bar"><i style="width:80%;"></i></span><span class="pct">80</span></div>
+        <div class="skill-row"><span class="name">Color</span><span class="bar"><i style="width:74%;"></i></span><span class="pct">74</span></div>
+      </div>
+      <div class="head" style="font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-mute); margin: 20px 0 12px;">Recent works</div>
+      <div class="gallery">
+        <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+        <div class="ph photo cream"><img src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+        <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+      </div>
+      <a class="book-btn">Reserve with Reina <span class="arrow">→</span></a>
+    </div>
+  </article>
+
+  <!-- RECRUIT -->
+  <section class="reveal" style="padding: 32px 24px 96px;">
+    <div style="background: linear-gradient(135deg, var(--sage), var(--cream)); border-radius: var(--radius-lg); padding: 32px 26px; position: relative; overflow: hidden;">
+      <span class="eyebrow" style="margin-bottom: 14px;">Recruit</span>
+      <h3 class="en" style="font-size: 36px; line-height: 1; margin: 8px 0 6px;">Join MIRU.</h3>
+      <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.9; margin-bottom: 18px;">
+        韓国トレンドが好きなアシスタント・スタイリスト募集中。<br/>未経験OK / 業務委託可。
+      </p>
+      <a class="cta-ghost">Recruit info →</a>
+    </div>
+  </section>
+
+</Layout>

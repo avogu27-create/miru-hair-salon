@@ -1,0 +1,110 @@
+---
+interface Props {
+  title: string;
+  currentPage: 'top' | 'menu' | 'stylist' | 'access';
+}
+const { title, currentPage } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles/global.css" />
+</head>
+<body>
+<div class="shell">
+
+  <!-- NAV -->
+  <header class="nav">
+    <a href="/" class="nav-logo">MIRU<small>HAIR · TOKYO</small></a>
+    <nav class="desktop-nav">
+      <a href="/" class={currentPage === 'top' ? 'current' : ''}>Top</a>
+      <a href="/menu" class={currentPage === 'menu' ? 'current' : ''}>Menu</a>
+      <a href="/stylist" class={currentPage === 'stylist' ? 'current' : ''}>Stylist</a>
+      <a href="/access" class={currentPage === 'access' ? 'current' : ''}>Access</a>
+      <a class="cta">Reserve →</a>
+    </nav>
+    <button class="nav-btn" aria-label="menu"><span></span><span></span></button>
+  </header>
+
+  <!-- DRAWER -->
+  <nav class="drawer">
+    <button class="drawer-close" aria-label="close"></button>
+    <ul class="drawer-nav">
+      <li><a href="/" class={currentPage === 'top' ? 'current' : ''}><span class="en">Top</span><span class="jp">トップ · 01</span></a></li>
+      <li><a href="/menu" class={currentPage === 'menu' ? 'current' : ''}><span class="en">Menu</span><span class="jp">メニュー · 02</span></a></li>
+      <li><a href="/stylist" class={currentPage === 'stylist' ? 'current' : ''}><span class="en">Stylist</span><span class="jp">スタイリスト · 03</span></a></li>
+      <li><a href="/access" class={currentPage === 'access' ? 'current' : ''}><span class="en">Access</span><span class="jp">アクセス · 04</span></a></li>
+    </ul>
+    <div class="drawer-foot">
+      <a>@miru_hair</a>
+      <a>03-0000-0000</a>
+      <a>東京都渋谷区神宮前 0-0-0</a>
+    </div>
+  </nav>
+
+  <!-- PAGE CONTENT -->
+  <slot />
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo en">MIRU.</div>
+        <div class="footer-sub">Korean-trend hair · Tokyo Omotesando</div>
+        <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.9;">
+          鏡をのぞきこむ、その一瞬を大切にしたい。<br />
+          MIRUは、あなたの"好き"を写しとるサロンです。
+        </p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Pages</div>
+        <div class="footer-links">
+          <a href="/">— Top</a>
+          <a href="/menu">— Menu</a>
+          <a href="/stylist">— Stylist</a>
+          <a href="/access">— Access</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-head">Contact</div>
+        <div class="footer-links">
+          <a>— @miru_hair</a>
+          <a>— LINE @miru-line</a>
+          <a>— 03-0000-0000</a>
+          <a>— 神宮前 4-00-00 2F</a>
+        </div>
+      </div>
+      <div class="footer-meta">© 2026 MIRU · All rights reserved · Site by MIRU studio</div>
+    </div>
+  </footer>
+
+  <!-- STICKY CTA -->
+  <div class="sticky-cta">
+    <a class="cta-pill">Reserve · 予約する</a>
+    <button class="icon-btn" aria-label="line">LINE</button>
+  </div>
+
+</div>
+
+<script is:inline src="/shared.js"></script>
+</body>
+</html>
+
+<style>
+.footer-col-head {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 16px;
+}
+</style>

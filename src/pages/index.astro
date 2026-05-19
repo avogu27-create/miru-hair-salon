@@ -1,0 +1,679 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="MIRU ミル — 韓国風ヘアサロン" currentPage="top">
+
+<style>
+.hero {
+  position: relative;
+  padding: 0 0 80px;
+}
+.hero-stage {
+  position: relative;
+  padding: 12px 12px 0;
+}
+.hero-img {
+  position: relative;
+  aspect-ratio: 3 / 4.2;
+  border-radius: 28px;
+  overflow: hidden;
+}
+.hero-img .ph {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+}
+.hero-img .ph.main { --ph-bg: #ecd2cf; --ph-bg2: #d9b3ae; }
+.hero-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(74,58,46,0.35) 100%);
+  z-index: 2;
+  border-radius: 28px;
+}
+.hero-tag {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 3;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: rgba(74,58,46,0.5);
+  backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+.hero-meta {
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+  z-index: 3;
+  text-align: right;
+  color: var(--cream);
+}
+.hero-meta .num {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 56px;
+  line-height: 0.95;
+  font-weight: 500;
+}
+.hero-meta .lbl {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+.hero-copy {
+  padding: 36px 12px 0;
+}
+.hero-copy h1 {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 84px;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+.hero-copy h1 .accent { color: var(--pink-deep); }
+.hero-copy h1 span.line2 { display: block; padding-left: 40px; }
+.hero-copy .jp-catch {
+  margin-top: 28px;
+  font-family: var(--font-jp);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 2;
+  color: var(--ink);
+  letter-spacing: 0.06em;
+}
+.hero-copy .jp-sub {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.9;
+}
+.hero-meta-bar {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.hero-meta-bar .dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--sage-deep);
+  display: inline-block; margin-right: 8px;
+}
+
+/* concept */
+.concept { padding: 96px 24px 80px; }
+.concept .lead {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 18px 0 28px;
+  color: var(--ink);
+}
+.concept .lead small {
+  display: block;
+  font-style: italic;
+  font-size: 28px;
+  color: var(--ink-soft);
+  padding-left: 24px;
+}
+.concept p {
+  font-size: 14px;
+  line-height: 2.1;
+  color: var(--ink-soft);
+  margin: 16px 0;
+}
+.concept-imgs {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-template-rows: 140px 200px;
+  gap: 12px;
+}
+.concept-imgs .ph:nth-child(1) { grid-row: 1 / span 2; }
+.concept-imgs .ph { border-radius: 20px; }
+.tag-row {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--hairline);
+  color: var(--ink-soft);
+  background: rgba(255,255,255,0.4);
+}
+.tag.pink { background: var(--pink); border-color: var(--pink-deep); color: #6e4640; }
+.tag.lav  { background: var(--lavender); border-color: var(--lavender-deep); color: #4a437a; }
+.tag.sage { background: var(--sage); border-color: var(--sage-deep); color: #3f5840; }
+
+/* menu */
+.menu-sec {
+  padding: 96px 24px 64px;
+  background:
+    radial-gradient(ellipse at 50% 0%, var(--cream-deep) 0%, transparent 60%),
+    var(--cream);
+}
+.menu-grid { display: flex; flex-direction: column; gap: 18px; }
+.menu-card {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 18px;
+  align-items: center;
+  padding: 14px;
+  background: var(--off-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+.menu-card .ph { width: 100px; height: 124px; border-radius: 14px; }
+.menu-card .body { padding: 8px 4px 8px 0; }
+.menu-card .num {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-mute);
+  margin-bottom: 4px;
+}
+.menu-card .ttl-en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.menu-card .ttl-jp {
+  font-size: 12px;
+  color: var(--ink-soft);
+  letter-spacing: 0.18em;
+  margin-bottom: 12px;
+}
+.menu-card .price {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline);
+}
+.menu-card .price .yen {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+}
+.menu-card .price .yen small { font-size: 11px; color: var(--ink-mute); margin-left: 2px; font-style: normal; font-family: var(--font-jp); }
+.menu-card .price .arrow {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--ink-mute);
+}
+
+/* stylist */
+.stylist-sec { padding: 96px 0 64px; position: relative; }
+.stylist-sec .section-head { padding: 0 24px; }
+.stylist-track {
+  display: flex;
+  gap: 14px;
+  padding: 12px 24px 32px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.stylist-track::-webkit-scrollbar { display: none; }
+.stylist-card {
+  flex: 0 0 232px;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+.stylist-card .ph { aspect-ratio: 3/4; border-radius: 20px; margin-bottom: 14px; }
+.stylist-card .role {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 4px;
+}
+.stylist-card .name-en {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--ink);
+  line-height: 1;
+}
+.stylist-card .name-jp {
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.2em;
+  margin-top: 4px;
+}
+.stylist-card .quote {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--ink-soft);
+}
+
+/* instagram */
+.insta-sec {
+  padding: 96px 24px 80px;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+}
+.insta-head { text-align: center; margin-bottom: 32px; }
+.insta-head .handle {
+  font-family: var(--font-en);
+  font-style: italic;
+  font-size: 44px;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.insta-head .jp {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  letter-spacing: 0.16em;
+}
+.insta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.insta-grid .ph { aspect-ratio: 1; border-radius: 10px; }
+.insta-cta { margin: 32px auto 0; display: flex; justify-content: center; }
+
+/* access preview */
+.access-prev { padding: 96px 24px 80px; }
+.access-card {
+  background: var(--off-white);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+.access-card .map-ph {
+  height: 180px;
+  border-radius: 18px;
+  margin-bottom: 22px;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 18px, rgba(74,58,46,0.06) 18px 19px),
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(74,58,46,0.06) 18px 19px),
+    linear-gradient(135deg, #e6e0cd, #d6cdb3);
+  position: relative;
+}
+.access-card .map-ph::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -100%);
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 8px 16px -4px rgba(74,58,46,0.5);
+}
+.access-card .map-ph::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(217, 179, 174, 0.4);
+  animation: pulse 2.4s ease-out infinite;
+}
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+.access-list { display: flex; flex-direction: column; gap: 16px; }
+.access-list .row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--hairline);
+}
+.access-list .row:last-child { border-bottom: none; padding-bottom: 0; }
+.access-list .row .lbl {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  padding-top: 4px;
+}
+.access-list .row .val { font-size: 13px; color: var(--ink); line-height: 1.8; }
+.access-list .row .val .en { font-size: 15px; margin-right: 6px; }
+
+/* TABLET 760+ */
+@media (min-width: 760px) {
+  .hero { padding: 0 0 120px; }
+  .hero-stage { padding: 32px 48px 0; }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .hero-img { aspect-ratio: 3/4; max-height: 700px; }
+  .hero-copy { padding: 0; max-width: 100%; }
+  .hero-copy h1 { font-size: 128px; }
+  .hero-copy h1 span.line2 { padding-left: 80px; }
+  .hero-copy .jp-catch { font-size: 22px; }
+  .hero-copy .jp-sub { font-size: 14px; max-width: 420px; }
+
+  .concept {
+    padding: 120px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .concept .lead { font-size: 64px; }
+  .concept .lead small { font-size: 40px; }
+  .concept-imgs { margin-top: 0; grid-template-rows: 200px 280px; gap: 16px; }
+
+  .menu-sec { padding: 120px 48px; }
+  .menu-sec .section-head,
+  .menu-sec .section-jp,
+  .menu-sec .menu-grid { max-width: 1200px; margin-left: auto; margin-right: auto; }
+  .section-head h2 { font-size: 88px; }
+  .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .menu-card { grid-template-columns: 140px 1fr; }
+  .menu-card .ph { width: 140px; height: 168px; }
+  .menu-card .ttl-en { font-size: 32px; }
+
+  .stylist-sec { padding: 120px 48px 96px; max-width: 1300px; margin: 0 auto; }
+  .stylist-sec .section-head { padding: 0; }
+  .stylist-sec .section-jp { padding: 0 !important; }
+  .stylist-track {
+    overflow: visible;
+    padding: 12px 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .stylist-card { flex: 1; }
+  .stylist-card .name-en { font-size: 36px; }
+
+  .insta-sec { padding: 120px 48px; }
+  .insta-grid { max-width: 1100px; margin: 0 auto; gap: 12px; }
+  .insta-grid .ph { border-radius: 16px; }
+  .insta-head .handle { font-size: 64px; }
+
+  .access-prev { padding: 120px 48px; max-width: 1200px; margin: 0 auto; }
+  .access-card {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 36px;
+    padding: 40px;
+    align-items: center;
+  }
+  .access-card .map-ph { height: 100%; min-height: 320px; margin-bottom: 0; }
+}
+
+/* DESKTOP 1100+ */
+@media (min-width: 1100px) {
+  .hero-stage { padding: 48px 80px 0; }
+  .hero-copy h1 { font-size: 160px; }
+  .concept { padding: 160px 80px; grid-template-columns: 1fr 1.1fr; gap: 96px; }
+  .concept .lead { font-size: 84px; }
+  .concept .lead small { font-size: 48px; }
+  .menu-sec { padding: 160px 80px; }
+  .menu-grid { grid-template-columns: repeat(4, 1fr); }
+  .menu-card { grid-template-columns: 1fr; }
+  .menu-card .ph { width: 100%; height: 220px; }
+  .menu-card .body { padding: 20px 8px 8px; }
+  .menu-card .ttl-en { font-size: 28px; }
+  .stylist-sec { padding: 160px 80px 120px; }
+  .insta-sec { padding: 160px 80px; }
+  .insta-grid { grid-template-columns: repeat(6, 1fr); }
+  .insta-grid .ph { border-radius: 18px; }
+  .access-prev { padding: 160px 80px; }
+  .access-card { padding: 56px; gap: 56px; }
+  .section-head h2 { font-size: 112px; }
+}
+</style>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-stage">
+      <div class="hero-inner">
+        <div class="hero-img">
+          <span class="hero-tag">Spring / Summer 26 · Look book</span>
+          <div class="ph photo main"><img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=900&q=80" alt="MIRU model" /><div class="tint pink"></div></div>
+          <div class="hero-meta">
+            <div class="num">'26</div>
+            <div class="lbl">Now booking</div>
+          </div>
+        </div>
+        <div class="hero-copy reveal">
+          <h1>
+            <span>Soft, &amp;</span>
+            <span class="line2"><span class="accent">tender</span>.</span>
+          </h1>
+          <p class="jp-catch">
+            やわらかな質感で、<br />
+            わたしらしい韓国スタイルを。
+          </p>
+          <p class="jp-sub">
+            韓国トレンドを軸に、日本の髪質に合わせて再設計するヘアデザイン。
+            ふんわりと、すこし芯のある、これからの自分へ。
+          </p>
+          <div class="hero-meta-bar">
+            <span><span class="dot"></span>Open today · 11:00 – 20:00</span>
+            <span>01 / 04</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCEPT -->
+  <section class="concept reveal">
+    <div>
+      <div class="eyebrow">Concept · 02</div>
+      <div class="lead en">
+        A salon of softness,
+        <small>made for the next you.</small>
+      </div>
+      <p>
+        MIRU（ミル）は、<strong>"見る・魅る・観る"</strong> の三つの意味を重ねた、
+        韓国トレンドを基点とするスモールサロン。
+      </p>
+      <p>
+        くすみカラー・透明感・丸みのあるシルエット。<br />
+        流行を写しとるのではなく、あなたの輪郭にそっと寄り添うように整える。
+        鏡の前で"ちょっといいかも"と思える、その小さな瞬間を大切にしています。
+      </p>
+      <div class="tag-row">
+        <span class="tag pink">Olchang</span>
+        <span class="tag lav">Pastel</span>
+        <span class="tag sage">Sheer color</span>
+        <span class="tag">Layered</span>
+        <span class="tag">Soft wave</span>
+      </div>
+    </div>
+    <div class="concept-imgs">
+      <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=80" alt="" /></div>
+      <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1522337094846-8a818192de1f?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+      <div class="ph photo lav"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=700&q=80" alt="" /></div>
+    </div>
+  </section>
+
+  <!-- MENU PREVIEW -->
+  <section class="menu-sec">
+    <div class="section-head">
+      <h2>Menu</h2>
+      <a class="more" href="/menu">View all →</a>
+    </div>
+    <div class="section-jp">人気のメニュー · 03</div>
+    <div class="menu-grid">
+      <article class="menu-card reveal">
+        <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+        <div class="body">
+          <div class="num">M / 01</div>
+          <div class="ttl-en">Cut &amp; Form</div>
+          <div class="ttl-jp">韓国カット — 顔まわりデザイン</div>
+          <div class="price">
+            <span class="yen">¥6,600<small>〜</small></span>
+            <span class="arrow">DETAIL →</span>
+          </div>
+        </div>
+      </article>
+      <article class="menu-card reveal">
+        <div class="ph photo lav"><img src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+        <div class="body">
+          <div class="num">M / 02</div>
+          <div class="ttl-en">Sheer Color</div>
+          <div class="ttl-jp">シアーカラー — くすみ系</div>
+          <div class="price">
+            <span class="yen">¥9,900<small>〜</small></span>
+            <span class="arrow">DETAIL →</span>
+          </div>
+        </div>
+      </article>
+      <article class="menu-card reveal">
+        <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+        <div class="body">
+          <div class="num">M / 03</div>
+          <div class="ttl-en">Soft Wave Perm</div>
+          <div class="ttl-jp">韓国波ウェーブ・くびれ巻き</div>
+          <div class="price">
+            <span class="yen">¥13,200<small>〜</small></span>
+            <span class="arrow">DETAIL →</span>
+          </div>
+        </div>
+      </article>
+      <article class="menu-card reveal">
+        <div class="ph photo cream"><img src="https://images.unsplash.com/photo-1571875257727-256c39da42af?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+        <div class="body">
+          <div class="num">M / 04</div>
+          <div class="ttl-en">Honey Treatment</div>
+          <div class="ttl-jp">うるおいケアトリートメント</div>
+          <div class="price">
+            <span class="yen">¥4,400<small>〜</small></span>
+            <span class="arrow">DETAIL →</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- STYLISTS -->
+  <section class="stylist-sec">
+    <div class="section-head">
+      <h2>Stylist</h2>
+      <a class="more" href="/stylist">All members →</a>
+    </div>
+    <div class="section-jp" style="padding: 0 24px;">在籍スタイリスト · 04</div>
+    <div class="stylist-track">
+      <article class="stylist-card">
+        <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80" alt="Honoka" /></div>
+        <div class="role">Director · 01</div>
+        <div class="name-en">Honoka</div>
+        <div class="name-jp">堀井 ほのか</div>
+        <p class="quote">「やわらかさの中に、あなたの輪郭。」</p>
+      </article>
+      <article class="stylist-card">
+        <div class="ph photo lav"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80" alt="Miyu" /></div>
+        <div class="role">Color Master · 02</div>
+        <div class="name-en">Miyu</div>
+        <div class="name-jp">岸本 みゆ</div>
+        <p class="quote">「肌色で選ぶ、くすみカラー。」</p>
+      </article>
+      <article class="stylist-card">
+        <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80" alt="Reina" /></div>
+        <div class="role">Stylist · 03</div>
+        <div class="name-en">Reina</div>
+        <div class="name-jp">藤田 れいな</div>
+        <p class="quote">「丸みでつくる、韓国シルエット。」</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="insta-sec reveal">
+    <div class="insta-head">
+      <div class="eyebrow" style="justify-content:center;">Instagram · 05</div>
+      <div class="handle" style="margin-top: 14px;">@miru_hair</div>
+      <p class="jp">毎日のスタイル更新中 — フォローしてね</p>
+    </div>
+    <div class="insta-grid">
+      <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+      <div class="ph photo lav"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+      <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="" /></div>
+      <div class="ph photo cream"><img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+      <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+      <div class="ph photo lav"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80" alt="" /></div>
+      <div class="ph photo sage"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+      <div class="ph photo pink"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+      <div class="ph photo cream"><img src="https://images.unsplash.com/photo-1522337094846-8a818192de1f?auto=format&fit=crop&w=600&q=80" alt="" /></div>
+    </div>
+    <div class="insta-cta">
+      <a class="cta-ghost">Follow on Instagram</a>
+    </div>
+  </section>
+
+  <!-- ACCESS PREVIEW -->
+  <section class="access-prev">
+    <div class="section-head">
+      <h2>Access</h2>
+      <a class="more" href="/access">Details →</a>
+    </div>
+    <div class="section-jp">アクセス · 06</div>
+    <div class="access-card reveal">
+      <div class="map-ph"></div>
+      <div class="access-list">
+        <div class="row">
+          <div class="lbl">Address</div>
+          <div class="val">東京都渋谷区神宮前 4-00-00<br />MIRU Building 2F</div>
+        </div>
+        <div class="row">
+          <div class="lbl">Station</div>
+          <div class="val"><span class="en">5min</span>表参道駅 A2出口より徒歩</div>
+        </div>
+        <div class="row">
+          <div class="lbl">Open</div>
+          <div class="val">平日 11:00 – 21:00 / 土日 10:00 – 20:00</div>
+        </div>
+        <div class="row">
+          <div class="lbl">Closed</div>
+          <div class="val">毎週火曜・第3水曜</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
